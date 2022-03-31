@@ -8,10 +8,10 @@ POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 {
-    "fullname": "Suphachock2",
-    "username": "chokun10101",
+    "fullname": "Suphachock",
+    "username": "chokun1010",
     "telephone": "0999999999",
-    "email": "chok1@gmail.com",
+    "email": "chok@gmail.com",
     "password": "123456"
 
 }
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 {
     
-    "username": "chokun1010",
+    "email": "chok@gmail.com",
     "password": "123456"
 
 }
