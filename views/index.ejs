@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <title>MiniMart</title>
+    <!-- Link To CSS -->
+    <link rel="stylesheet" href="/css/main.css" type="text/css" />
+    <!-- Box Icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <!-- nav -->
+      <div class="nav container">
+        <a href="#" class="logo">FoodManda</a>
+        <!-- Cart-Icon -->
+        <ul>
+          <li class="nav-item active">
+          <i class="bx bx-shopping-bag" id="cart-icon"></i>
+          <a href="#" class="menu">Home</a>
+          <a href="/login" class="menu">Login & Register</a>
+          </li>
+
+        </ul>
+
+      </div>
+      <div class="cart">
+        <h2 class="cart-title">Your Cart</h2>
+        <div class="cart-content">
+      </div>
+      
+      <!-- Total -->
+      <div class="total">
+          <div class="total-title">Total</div>
+          <div class="total-price">$0</div>
+      </div>
+      <!-- Buy Button -->
+      <button type%="button" class="btn-buy">Buy Now</button>
+      <!-- Cart CLose -->
+      <i class='bx bx-x' id="close-cart"></i>                       
+      </div> 
+    </header>
+
+    <section class="shop container">
+      <h2 class="section-title">เมนูอาหาร</h2>
+      <!-- Content -->
+      <div class="shop-content">
+        <!-- Box 1 -->
+        <!-- <div class="product-box">
+          <% items.forEach(function(image) { %>
+          <img
+            src="data:image/<%=image.img.contentType%>;base64,
+                <%=image.img.data.toString('base64')%>"
+                alt="" class="product-img"
+          />
+          <h2 class="product-title"><%= image.name %></h2>
+          <span class="price"><%= image.desc %></span>
+          <i class="bx bx-shopping-bag add-ca"></i>
+          <% }) %>
+        </div> -->
+
+        <div class="product-box">
+          <img src="/img/product1.jpg" alt="" class="product-img">
+          <h2 class="product-title">AEROREADY SHIRT</h2>
+          <span class="price">$25</span>
+         <i class='bx bx-shopping-bag add-cart'></i>
+        </div>
+
+        <div class="product-box">
+          <img src="/img/product1.jpg" alt="" class="product-img">
+          <h2 class="product-title">BBB</h2>
+          <span class="price">$35</span>
+         <i class='bx bx-shopping-bag add-cart'></i>
+        </div>
+
+        <div class="product-box">
+          <img src="/img/product1.jpg" alt="" class="product-img">
+          <h2 class="product-title">CCC</h2>
+          <span class="price">$30</span>
+          <i class='bx bx-shopping-bag add-cart'></i>
+        </div>
+
+        <div class="product-box">
+          <img src="/img/product1.jpg" alt="" class="product-img">
+          <h2 class="product-title">DDD</h2>
+          <span class="price">$15</span>
+          <i class='bx bx-shopping-bag add-cart'></i>
+        </div>
+
+        <div class="product-box">
+          <img src="/img/product1.jpg" alt="" class="product-img">
+          <h2 class="product-title">EEE</h2>
+          <span class="price">$20</span>
+          <i class='bx bx-shopping-bag add-cart'></i>
+        </div>
+
+        <div class="product-box">
+          <img src="/img/product1.jpg" alt="" class="product-img">
+          <h2 class="product-title">FFFF</h2>
+          <span class="price">$45</span>
+          <i class='bx bx-shopping-bag add-cart'></i>
+        </div>
+
+        <div class="product-box">
+          <img src="/img/product1.jpg" alt="" class="product-img">
+          <h2 class="product-title">GGG</h2>
+          <span class="price">$45</span>
+          <i class='bx bx-shopping-bag add-cart'></i>
+        </div>
+
+        <div class="product-box">
+          <img src="/img/product1.jpg" alt="" class="product-img">
+          <h2 class="product-title">HHHH</h2>
+          <span class="price">$55</span>
+          <i class='bx bx-shopping-bag add-cart'></i>
+        </div>
+  </section>
+  </body>
+  <script src="/js/main.js"></script>
+</html>
