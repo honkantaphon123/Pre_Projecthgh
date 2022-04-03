@@ -38,7 +38,14 @@ app.set('view engine', 'ejs')
 
 // กำหนด Path ของ EJS
 app.get('/', (req, res) => {
+  const aa = req.session.fullname
+  if (aa) res.redirect('/index2')
   res.render('index')
+})
+
+app.get('/logout', (req, res) => {
+  req.session.destroy()
+  res.redirect('/index2')
 })
 
 app.get('/login', (req, res) => {
@@ -50,7 +57,13 @@ app.get('/register', (req, res) => {
 })
 
 app.get('/index2', (req, res) => {
-  res.render('index2')
+  const aa = req.session.fullname
+  if (req.session.fullname == undefined) {
+    res.redirect('/')
+  } if (aa) {
+	 res.render('index2', { title: 'Express222', email: req.session.fullname })
+    // res.redirect('/');
+  }
 })
 
 // เรียกใช้งาน Routes

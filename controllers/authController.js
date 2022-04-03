@@ -46,7 +46,7 @@ exports.Login = async (req, res, next) => {
   // pass in request data here to create user from user schema
   try {
     const user = await User.findOne({ email: req.body.email })
-
+    req.session.fullname = user.fullname
     if (!user) {
       req.flash('msg', 'Wrong E-mail Or Password')
       res.redirect('/login')
@@ -57,6 +57,7 @@ exports.Login = async (req, res, next) => {
       res.redirect('/login')
     }
     res.redirect('/index2')
+
     // if user can't be created, throw an error
   } catch (err) {
     next(err)
