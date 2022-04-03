@@ -16,7 +16,6 @@
   <body>
     <div class="wrapper">
       <div class="title-text">
-        <div class="title login">LogIn</div>
         <div class="title signup">SignUp</div>
       </div>
       <div class="form-container">
@@ -24,13 +23,21 @@
         <div class="alert alert-info" align="center"><%= msg %></div>
         <% } %>
         <div class="form-inner">
-          <form action="./auth/login" method="post" class="login">
+          <form action="./auth/register" method="post" class="login">
             <div class="field">
               <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
+                type="text"
+                name="fullname"
+                placeholder="Fullname"
                 required
+              />
+            </div>
+            <div class="field">
+              <input type=tel" name="telephone" placeholder="Telephone"
+              maxlength="10" minlength="10" pattern="^\d{10}$" required />
+            </div>
+            <div class="field">
+              <input type="email" name="email" placeholder="E-mail" required /"
               />
             </div>
             <div class="field">
@@ -41,16 +48,17 @@
                 required
               />
             </div>
+
             <div class="field btn">
               <div class="btn-layer"></div>
-              <input type="submit" value="Login" />
+              <input type="submit" value="Signup" />
             </div>
             <div class="signup-link">
-              Not a member? <a href="/register">Signup now</a>
+              You already have an account? <a href="/login"> Sign In</a>
             </div>
           </form>
 
-          <form action="" class="signup">
+          <form action="" method="POST" class="signup">
             <div class="field btn">
               <div class="btn-layer"></div>
               <input type="submit" value="Signup" />

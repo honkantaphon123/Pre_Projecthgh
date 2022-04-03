@@ -1,84 +1,66 @@
 // Step 1 - set up express & mongoose
-require("dotenv").config();
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
-const authRoute = require("./routes/auth.js");
-var fs = require("fs");
-var path = require("path");
+require('dotenv').config()
 
+const mongoose = require('mongoose')
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
+const flush = require('connect-flash')
+const errorController = require('./controllers/errorController')
+const authRouter = require('./routes/authRouter')
+const morgan = require('morgan')
+const cors = require('cors')
+const session = require('express-session')
+const cookieParser = require('cookie-parser')
 
-mongoose.connect(process.env.DATABASE_URL);
-const db = mongoose.connection;
-db.on("error", (error) => console.error(error));
-db.once("open", () => console.log("Connected to Database"));
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(flush())
+mongoose.connect(process.env.DATABASE_URL)
+const db = mongoose.connection
+db.on('error', (error) => console.error(error))
+db.once('open', () => console.log('Connected to Database'))
+app.use(express.static('public'))
+app.use(errorController)
+app.use(cors())
+app.use(morgan('tiny'))
+app.use(cookieParser())
+app.use(session({
+  secret: 'secret',
+  cookie: { maxAge: 60000 },
+  resave: false,
+  saveUninitialized: false
+}))
 
 // Set EJS as templating engine
-app.set("views", "./views");
-app.set("view engine", "ejs");
+app.set('views', './views')
+app.set('view engine', 'ejs')
 
-// Step 5 - set up multer for storing uploaded files
+// กำหนด Path ของ EJS
+app.get('/', (req, res) => {
+  res.render('index')
+})
 
-var multer = require('multer');
+app.get('/login', (req, res) => {
+  res.render('login', { msg: req.flash('msg') })
+})
 
-var storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, 'uploads')
-	},
-	filename: (req, file, cb) => {
-		cb(null, file.fieldname + '-' + Date.now())
-	}
-});
+app.get('/register', (req, res) => {
+  res.render('register', { msg: req.flash('msg') })
+})
 
-var upload = multer({ storage: storage });
-// Step 6 - load the mongoose model for Image
+app.get('/index2', (req, res) => {
+  res.render('index2')
+})
 
-var imgModel = require("./model");
-
-// Step 7 - the GET request handler that provides the HTML UI
-
-app.get("/", (req, res) => {
-  imgModel.find({}, (err, items) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send("An error occurred", err);
-    } else {
-      res.render("index", { items: items });
-    }
-  });
-});
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
-// Step 8 - the POST handler for processing the uploaded file
-
-app.post('/', upload.single('image'), (req, res, next) => {
-
-	var obj = {
-		name: req.body.name,
-		desc: req.body.desc,
-		img: {
-			data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-			contentType: 'image/png'
-		}
-	}
-	imgModel.create(obj, (err, item) => {
-		if (err) {
-			console.log(err);
-		}
-		else {
-			// item.save();
-			res.redirect('/');
-		}
-	});
-});
-
+// เรียกใช้งาน Routes
+// app.use('/api/auth', authRoute)
+app.use('/auth/', authRouter)
 // Step 9 - configure the server's port
-app.use("/api/auth", authRoute);
-app.listen(3000, () => console.log("Server Started"));
+app.listen(3000, () => console.log('Server Started'))
+
+// Error handling
+app.use((err, req, res, next) => {
+  console.log('congrats you hit the error middleware')
+  console.log(err)
+})
