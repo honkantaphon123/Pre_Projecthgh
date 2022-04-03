@@ -38,7 +38,7 @@ exports.registerUser = async (req, res, next) => {
     // if user can't be created, throw an error
   } catch (err) {
     next(err)
-    req.flash('msg', 'Telephone Or E-mail already exists')
+    req.flash('msg', 'Telephone or E-mail already exists')
     res.redirect('/register')
   }
 }
