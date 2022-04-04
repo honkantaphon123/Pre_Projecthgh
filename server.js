@@ -60,7 +60,7 @@ app.get('/admin', (req, res) => {
   const admin = req.session.fullname
   if (admin == undefined) {
     res.redirect('/')
-  } else { res.render('login') }
+  } else { res.render('login'), { msg: req.flash('msg') } }
 })
 
 app.get('/index2', (req, res) => {

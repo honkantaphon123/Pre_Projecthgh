@@ -46,7 +46,7 @@ exports.Login = async (req, res, next) => {
   // pass in request data here to create user from user schema
   try {
     const user = await User.findOne({ email: req.body.email })
-    req.session.fullname = user.fullname
+    if (user) req.session.fullname = user.fullname
     if (!user) {
       req.flash('msg', 'Wrong E-mail Or Password')
       res.redirect('/login')
@@ -58,7 +58,7 @@ exports.Login = async (req, res, next) => {
     }
     const admin = user.isAdmin
     if (admin == true) {
-      res.redirect('/admin')
+      res.render('admin')
     }
     res.redirect('/index2')
 
