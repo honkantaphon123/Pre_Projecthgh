@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 
 app.get('/logout', (req, res) => {
   req.session.destroy()
-  res.redirect('/index2')
+  res.redirect('/login')
 })
 
 app.get('/login', (req, res) => {
@@ -56,13 +56,19 @@ app.get('/register', (req, res) => {
   res.render('register', { msg: req.flash('msg') })
 })
 
+app.get('/admin', (req, res) => {
+  const admin = req.session.fullname
+  if (admin == undefined) {
+    res.redirect('/')
+  } else { res.render('login') }
+})
+
 app.get('/index2', (req, res) => {
   const aa = req.session.fullname
   if (req.session.fullname == undefined) {
-    res.redirect('/')
+    res.redirect('/login')
   } if (aa) {
 	 res.render('index2', { title: 'Express222', email: req.session.fullname })
-    // res.redirect('/');
   }
 })
 

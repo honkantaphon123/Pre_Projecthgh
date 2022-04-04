@@ -56,6 +56,10 @@ exports.Login = async (req, res, next) => {
       req.flash('msg', 'Wrong E-mail Or Password')
       res.redirect('/login')
     }
+    const admin = user.isAdmin
+    if (admin == true) {
+      res.redirect('/admin')
+    }
     res.redirect('/index2')
 
     // if user can't be created, throw an error
