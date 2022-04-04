@@ -23,6 +23,20 @@ const createUserToken = async (user, code, req, res) => {
   res.redirect('/login')
 }
 
+const createUserToken2 = async (user, code, req, res) => {
+  const token = signToken(user._id)
+
+  // cookie settings
+  res.cookie('jwt', token, {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true
+  })
+
+  // remove user password from output
+  user.password = undefined
+  res.redirect('/admin')
+}
+
 exports.registerUser = async (req, res, next) => {
   // pass in request data here to create user from user schema
   try {
@@ -42,25 +56,43 @@ exports.registerUser = async (req, res, next) => {
     res.redirect('/register')
   }
 }
+
+exports.registerByadmin = async (req, res, next) => {
+  // pass in request data here to create user from user schema
+  try {
+    const newUser = await User.create({
+      fullname: req.body.fullname,
+      telephone: req.body.telephone,
+      email: req.body.email,
+      password: req.body.password
+
+    })
+    createUserToken2(newUser, 201, req, res)
+    // if user can't be created, throw an error
+  } catch (err) {
+    next(err)
+    req.flash('msg', 'Telephone or E-mail already exists')
+    res.redirect('/add-user')
+  }
+}
 exports.Login = async (req, res, next) => {
   // pass in request data here to create user from user schema
   try {
     const user = await User.findOne({ email: req.body.email })
     if (user) req.session.fullname = user.fullname
     if (!user) {
-      req.flash('msg', 'Wrong E-mail Or Password')
+      req.flash('msg', 'Wrong E-mail')
       res.redirect('/login')
     }
     const validated = await bcrypt.compare(req.body.password, user.password)
     if (validated === false) {
-      req.flash('msg', 'Wrong E-mail Or Password')
+      req.flash('msg', 'Wrong Password')
       res.redirect('/login')
     }
     const admin = user.isAdmin
     if (admin === true) {
-      res.render('admin')
-    }
-    res.redirect('/index2')
+      res.redirect('/admin')
+    } else { res.redirect('/index2') }
 
     // if user can't be created, throw an error
   } catch (err) {

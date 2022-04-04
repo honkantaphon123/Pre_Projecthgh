@@ -56,11 +56,16 @@ app.get('/register', (req, res) => {
   res.render('register', { msg: req.flash('msg') })
 })
 
+app.get('/add-user', (req, res) => {
+  res.render('add_user', { msg: req.flash('msg') })
+})
+
 app.get('/admin', (req, res) => {
   const admin = req.session.fullname
   if (admin === undefined) {
     res.redirect('/login')
   }
+  res.render('admin')
 })
 
 app.get('/index2', (req, res) => {

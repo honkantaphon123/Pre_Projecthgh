@@ -1,0 +1,38 @@
+<!-- form handling -->
+<form action="./auth/admin/register" method="post" id="add_user">
+  <div class="new_user">
+    <div class="form-group">
+      Fullname
+      <input type="text" name="fullname" value="" required />
+    </div>
+    <div class="form-group">
+      Telephone
+      <input
+        type="text"
+        name="telephone"
+        value=""
+        maxlength="10"
+        minlength="10"
+        pattern="^\d{10}$"
+        required
+      />
+    </div>
+    <div class="form-group">
+      Email
+      <input
+        type="text"
+        name="email"
+        value=""
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        required
+      />
+    </div>
+    <div class="form-group">
+      Password
+      <input type="text" name="password" value="" required />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn text-dark update">Save</button>
+    </div>
+  </div>
+</form>
