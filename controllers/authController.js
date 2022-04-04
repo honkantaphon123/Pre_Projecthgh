@@ -52,12 +52,12 @@ exports.Login = async (req, res, next) => {
       res.redirect('/login')
     }
     const validated = await bcrypt.compare(req.body.password, user.password)
-    if (validated == false) {
+    if (validated === false) {
       req.flash('msg', 'Wrong E-mail Or Password')
       res.redirect('/login')
     }
     const admin = user.isAdmin
-    if (admin == true) {
+    if (admin === true) {
       res.render('admin')
     }
     res.redirect('/index2')
