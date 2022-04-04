@@ -58,17 +58,17 @@ app.get('/register', (req, res) => {
 
 app.get('/admin', (req, res) => {
   const admin = req.session.fullname
-  if (admin == undefined) {
-    res.redirect('/')
-  } else { res.render('login'), { msg: req.flash('msg') } }
+  if (admin === undefined) {
+    res.redirect('/login')
+  }
 })
 
 app.get('/index2', (req, res) => {
   const aa = req.session.fullname
-  if (req.session.fullname == undefined) {
+  if (aa === undefined) {
     res.redirect('/login')
   } if (aa) {
-	 res.render('index2', { title: 'Express222', email: req.session.fullname })
+    res.render('index2', { title: 'Express222', email: req.session.fullname })
   }
 })
 
