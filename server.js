@@ -1,6 +1,6 @@
 // Step 1 - set up express & mongoose
 require('dotenv').config()
-
+const User = require('./models/User2')
 const mongoose = require('mongoose')
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -63,10 +63,27 @@ app.get('/add-user', (req, res) => {
 })
 
 app.get('/update-user', services.update_user)
-app.put('/api/users/:id', controller.update)
+
+app.get('/delete-user/:id', (req, res) => {
+  const id = req.params.id
+  console.log(id)
+  User.findByIdAndDelete(id)
+    .then(data => {
+      if (!data) {
+        res.status(404).send({ message: `Cannot Delete with id ${id}. Maybe id is wrong` })
+      } else {
+        res.redirect('back')
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: 'Could not delete User with id=' + id
+      })
+    })
+})
+
 app.get('/admin', (services.homeRoutes))
 app.get('/api/users', controller.find)
-app.delete('/api/users/:id', controller.delete)
 
 app.get('/index2', (req, res) => {
   const aa = req.session.fullname

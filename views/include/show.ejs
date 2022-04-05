@@ -2,6 +2,8 @@
 <% for(var i = 0; i < users.length; i++) { %>
     <% if (users[i].isAdmin != true ) { %>
     <tr>
+
+        
         <td><%= i + 1 %></td>
         <td><%= users[i].fullname %></td>
         <td><%= users[i].email %></td>
@@ -12,7 +14,7 @@
                 <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
             </a>
 
-            <a href="./auth/delete" class="btn border-shadow delete " data-id=<%= users[i]._id%>  >
+            <a href="/delete-user/<%= users[i]._id%>" class="btn border-shadow delete " data-id=<%= users[i]._id%>  >
                 <span class="text-gradient"><i class="fas fa-times"></i></span>
             </a>
         </td>
