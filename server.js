@@ -1,6 +1,5 @@
 // Step 1 - set up express & mongoose
 require('dotenv').config()
-const User = require('./models/User2')
 const mongoose = require('mongoose')
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -63,25 +62,7 @@ app.get('/add-user', (req, res) => {
 })
 
 app.get('/update-user', services.update_user)
-
-app.get('/delete-user/:id', (req, res) => {
-  const id = req.params.id
-  console.log(id)
-  User.findByIdAndDelete(id)
-    .then(data => {
-      if (!data) {
-        res.status(404).send({ message: `Cannot Delete with id ${id}. Maybe id is wrong` })
-      } else {
-        res.redirect('back')
-      }
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: 'Could not delete User with id=' + id
-      })
-    })
-})
-
+app.get('/delete-user/:id', controller.delete)
 app.get('/admin', (services.homeRoutes))
 app.get('/api/users', controller.find)
 
@@ -95,7 +76,6 @@ app.get('/index2', (req, res) => {
 })
 
 // เรียกใช้งาน Routes
-// app.use('/api/auth', authRoute)
 app.use('/auth/', authRouter)
 // Step 9 - configure the server's port
 app.listen(3000, () => console.log('Server Started'))

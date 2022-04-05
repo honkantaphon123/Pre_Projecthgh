@@ -8,8 +8,6 @@ router.post('/admin/register', authController.registerByadmin)
 
 router.post('/update', authController.update)
 
-router.get('/delete', authController.delete)
-
 router.post('/login', authController.Login)
 
 module.exports = router

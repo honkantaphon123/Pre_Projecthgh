@@ -121,25 +121,3 @@ exports.update = (req, res) => {
       res.redirect('back')
     })
 }
-
-exports.delete = (req, res) => {
-  const id = req.body.id
-  const aa = req.params.id
-  console.log(aa)
-  console.log(id)
-  User.findByIdAndDelete(id)
-    .then(data => {
-      if (!data) {
-        res.status(404).send({ message: `Cannot Delete with id ${id}. Maybe id is wrong` })
-      } else {
-        res.send({
-          message: 'User was deleted successfully!'
-        })
-      }
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: 'Could not delete User with id=' + id
-      })
-    })
-}

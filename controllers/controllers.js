@@ -55,9 +55,7 @@ exports.delete = (req, res) => {
       if (!data) {
         res.status(404).send({ message: `Cannot Delete with id ${id}. Maybe id is wrong` })
       } else {
-        res.send({
-          message: 'User was deleted successfully!'
-        })
+        res.redirect('back')
       }
     })
     .catch(err => {
