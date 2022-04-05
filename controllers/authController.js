@@ -117,14 +117,16 @@ exports.update = (req, res) => {
       }
     })
     .catch(err => {
-      res.status(500).send({ message: 'Error Update user information' })
+      req.flash('msg', 'E-mail or Telephone are duplicate')
+      res.redirect('back')
     })
 }
 
 exports.delete = (req, res) => {
   const id = req.body.id
-  const aa = req.users
+  const aa = req.params.id
   console.log(aa)
+  console.log(id)
   User.findByIdAndDelete(id)
     .then(data => {
       if (!data) {

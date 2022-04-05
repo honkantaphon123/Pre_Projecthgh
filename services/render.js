@@ -17,7 +17,7 @@ exports.homeRoutes = (req, res) => {
 exports.update_user = (req, res) => {
   axios.get('http://localhost:3000/api/users', { params: { id: req.query.id } })
     .then(function (userdata) {
-      res.render('update_user', { user: userdata.data })
+      res.render('update_user', { user: userdata.data, msg: req.flash('msg') })
     })
     .catch(err => {
       res.send(err)

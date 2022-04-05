@@ -1,5 +1,8 @@
 <form action="./auth/update" method="POST" id="update_user">
   <div class="new_user">
+    <% if (msg.length > 0) { %>
+      <div class="alert alert-danger" align="center"><%= msg %></div>
+      <% } %>
     <div class="form-group">
       Fullname
       <input type="text" name="fullname" value="<%= user.fullname %>" required />
