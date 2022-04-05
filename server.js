@@ -12,6 +12,8 @@ const morgan = require('morgan')
 const cors = require('cors')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
+const services = require('./services/render')
+const controller = require('./controllers/controllers')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -60,13 +62,22 @@ app.get('/add-user', (req, res) => {
   res.render('add_user', { msg: req.flash('msg') })
 })
 
-app.get('/admin', (req, res) => {
-  const admin = req.session.fullname
-  if (admin === undefined) {
-    res.redirect('/login')
-  }
-  res.render('admin')
-})
+// app.get('/update-user', (req, res) => {
+//   res.render('update_user', { msg: req.flash('msg') })
+// })
+app.get('/update-user', services.update_user)
+app.put('/api/users/:id', controller.update)
+app.delete('/api/users/:id', controller.delete)
+// app.get('/admin', (req, res) => {
+//   const admin = req.session.fullname
+//   if (admin === undefined) {
+//     res.redirect('/login')
+//   }
+//   res.render('admin')
+// })
+
+app.get('/admin', (services.homeRoutes))
+app.get('/api/users', controller.find)
 
 app.get('/index2', (req, res) => {
   const aa = req.session.fullname
