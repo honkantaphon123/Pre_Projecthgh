@@ -1,17 +1,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 <% for(var i = 0; i < users.length; i++) { %>
+    <% if (users[i].isAdmin != true ) { %>
     <tr>
         <td><%= i + 1 %></td>
         <td><%= users[i].fullname %></td>
         <td><%= users[i].email %></td>
         <td><%= users[i].telephone %></td>
+        <input type="hidden" name="id" value="<%= users[i]._id %>">
         <td>
             <a href="/update-user?id=<%= users[i]._id%>" class="btn border-shadow update">
                 <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
             </a>
-            <a class="btn border-shadow delete" data-id=<%= users[i]._id%> >
+
+            <a href="./auth/delete"  btn border-shadow delete" data-id=<%= users[i]._id%>  >
                 <span class="text-gradient"><i class="fas fa-times"></i></span>
             </a>
         </td>
     </tr>
+    <% } %>
     <% } %>

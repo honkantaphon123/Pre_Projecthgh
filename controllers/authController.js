@@ -99,3 +99,45 @@ exports.Login = async (req, res, next) => {
     next(err)
   }
 }
+
+exports.update = (req, res) => {
+  if (!req.body) {
+    return res
+      .status(400)
+      .send({ message: 'Data to update can not be empty' })
+  }
+
+  const id = req.body.id
+  User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({ message: `Cannot Update user with ${id}. Maybe user not found!` })
+      } else {
+        res.redirect('/admin')
+      }
+    })
+    .catch(err => {
+      res.status(500).send({ message: 'Error Update user information' })
+    })
+}
+
+exports.delete = (req, res) => {
+  const id = req.body.id
+  const aa = req.users
+  console.log(aa)
+  User.findByIdAndDelete(id)
+    .then(data => {
+      if (!data) {
+        res.status(404).send({ message: `Cannot Delete with id ${id}. Maybe id is wrong` })
+      } else {
+        res.send({
+          message: 'User was deleted successfully!'
+        })
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: 'Could not delete User with id=' + id
+      })
+    })
+}

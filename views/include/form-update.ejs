@@ -1,9 +1,10 @@
-<form method="post" id="update_user">
+<form action="./auth/update" method="POST" id="update_user">
   <div class="new_user">
     <div class="form-group">
       Fullname
       <input type="text" name="fullname" value="<%= user.fullname %>" required />
     </div>
+    <input type="hidden" name="id" value="<%= user._id %>">
     <div class="form-group">
       Telephone
       <input
@@ -27,11 +28,8 @@
       />
     </div>
     <div class="form-group">
-      Password
-      <input type="text" name="password" value="<%= user.password %>" required />
-    </div>
-    <div class="form-group">
       <button type="submit" class="btn text-dark update">Save</button>
     </div>
   </div>
 </form>
+<script src="/js/index.js"></script>
