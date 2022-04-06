@@ -1,0 +1,36 @@
+<!-- form handling -->
+<form action="./auth/product/update" method="POST" id="add_user">
+    <div class="new_user">
+        <% if (msg.length > 0) { %>
+            <div class="alert alert-danger" align="center"><%= msg %></div>
+            <% } %>
+      <div class="form-group">
+        Prodcut Name
+        <input type="text" name="name" value="<%= product.name %>" required />
+        <input type="hidden" name="id" value="<%= product._id %>" />
+      </div>
+      <div class="form-group">
+        Price
+        <input
+          type="Number"
+          name="price"
+          value="<%= product.price %>"
+          min="1"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="cars">Categories :</label>
+        <select name="categories" id="cars" class="form-control">
+          <option value="อาหาร">อาหาร</option>
+          <option value="เครื่องดื่ม">เครื่องดื่ม</option>
+          <option value="ขนม">ขนม</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn text-dark update">Save</button>
+      </div>
+    </div>
+  </form>
+  

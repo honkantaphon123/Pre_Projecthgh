@@ -1,4 +1,5 @@
 const User = require('../models/User2')
+const Product = require('../models/Product')
 // const AppError = require('../utils/AppError')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
@@ -118,6 +119,29 @@ exports.update = (req, res) => {
     })
     .catch(err => {
       req.flash('msg', 'E-mail or Telephone are duplicate')
+      res.redirect('back')
+    })
+}
+
+exports.updateProduct = (req, res) => {
+  if (!req.body) {
+    return res
+      .status(400)
+      .send({ message: 'Data to update can not be empty' })
+  }
+
+  const id = req.body.id
+  console.log(id)
+  Product.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({ message: `Cannot Update user with ${id}. Maybe user not found!` })
+      } else {
+        res.redirect('/product')
+      }
+    })
+    .catch(err => {
+      req.flash('msg', 'Product Name is duplicate')
       res.redirect('back')
     })
 }

@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+<% for(var i = 0; i < product.length; i++) { %>
+    <tr>
+        <td><%= i + 1 %></td>
+        <td>ยังไม่มี</td>
+        <td><%= product[i].name %></td>
+        <td><%= product[i].price %> บาท</td>
+        <td><%= product[i].categories %></td>
+        <input type="hidden" name="id" value="<%= product[i]._id %>">
+        <td>
+            <a href="/update-product?id=<%= product[i]._id%>" class="btn border-shadow update">
+                <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+            </a>
+
+            <a href="/delete-product/<%= product[i]._id%>" class="btn border-shadow delete " data-id=<%= product[i]._id%>  >
+                <span class="text-gradient"><i class="fas fa-times"></i></span>
+            </a>
+        </td>
+    </tr>
+    <% } %>
