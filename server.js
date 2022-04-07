@@ -75,17 +75,18 @@ app.get('/delete-product/:id', controller.deleteProduct)
 app.get('/admin', (services.homeRoutes))
 app.get('/product', (services.homeProduct))
 app.get('/', (services.home))
+app.get('/index2', (services.home))
 app.get('/api/users', controller.find)
 app.get('/api/product', controller.findProduct)
 
-app.get('/index2', (req, res) => {
-  const aa = req.session.fullname
-  if (aa === undefined) {
-    res.redirect('/login')
-  } if (aa) {
-    res.render('index2', { email: req.session.fullname })
-  }
-})
+// app.get('/index2', (req, res) => {
+//   const aa = req.session.fullname
+//   if (aa === undefined) {
+//     res.redirect('/login')
+//   } if (aa) {
+//     res.render('index2', { email: req.session.fullname })
+//   }
+// })
 
 // เรียกใช้งาน Routes
 app.use('/auth/', authRouter)

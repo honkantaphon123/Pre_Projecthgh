@@ -35,7 +35,7 @@ exports.home = (req, res) => {
       const admin = req.session.fullname
       if (admin === undefined) {
         res.render('index', { product: response.data })
-      } else res.render('index2', { product: response.data })
+      } else res.render('index2', { product: response.data, email: req.session.fullname })
     })
     .catch(err => {
       res.send(err)
