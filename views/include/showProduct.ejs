@@ -1,8 +1,20 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+<style>
+    img {
+      border: 1px solid #ddd; /* Gray border */
+      border-radius: 4px;  /* Rounded border */
+      padding: 0px; /* Some padding */
+      width: 45px; /* Set a small width */
+    }
+    
+    /* Add a hover effect (blue shadow) */
+    img:hover {
+      box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    }
+    </style>
 <% for(var i = 0; i < product.length; i++) { %>
     <tr>
         <td><%= i + 1 %></td>
-        <td>ยังไม่มี</td>
+        <td><img src="<%= product[i].img %>" class="img" alt=""/></td>
         <td><%= product[i].name %></td>
         <td><%= product[i].price %> บาท</td>
         <td><%= product[i].categories %></td>
@@ -18,3 +30,4 @@
         </td>
     </tr>
     <% } %>
+    

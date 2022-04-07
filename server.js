@@ -23,6 +23,7 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
 app.use(express.static('public'))
+app.use(express.static('uploads'))
 app.use(errorController)
 app.use(cors())
 app.use(morgan('tiny'))

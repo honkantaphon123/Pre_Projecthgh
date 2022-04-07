@@ -129,10 +129,23 @@ exports.updateProduct = (req, res) => {
       .status(400)
       .send({ message: 'Data to update can not be empty' })
   }
-
   const id = req.body.id
-  console.log(id)
-  Product.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  let new_image = ''
+  if (req.file) {
+    new_image = req.file.filename
+    try {
+      fs.unlinksync('./uploads/' + req.body.old_image)
+    } catch (err) {
+      console.log(err)
+    }
+  } else new_image = req.body.old_image
+
+  Product.findByIdAndUpdate(id, {
+    name: req.body.name,
+    categories: req.body.categories,
+    price: req.body.price,
+    img: new_image
+  }, { useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.status(404).send({ message: `Cannot Update user with ${id}. Maybe user not found!` })
