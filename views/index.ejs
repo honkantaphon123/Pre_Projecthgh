@@ -48,21 +48,22 @@
 
     <section class="shop container">
       <h2 class="section-title">เมนูอาหาร</h2>
-      <% for(var i=0; i<product.length; i++) {%>
-        <div class="shop-content">
-          <div class="product-box">
-            <img src="<%= product[i].img %>" alt="" width="20" class="product-img">
-            <h2 class="product-title"><%= product[i].name %></h2>
-            <span class="price"><%= product[i].price %> บาท</span>
-          </div>     
-        </div>
-     <% } %>
       <!-- Content -->
 
+      <div class="shop-content">
+ 
+        <% for(var i = 0; i < product.length; i++) { %>
+        <div class="product-box">
+          <img src="<%  product[i].img %>" alt="" class="product-img">
+          <h2 class="product-title"><%  product[i].name %></h2>
+          <span class="price"><%  product[i].price %> บาท</span>
+         <i class='bx bx-shopping-bag add-cart'></i>
+        </div>
+        <% } %>
 
-       
 
   </section>
+
   </body>
   <script src="/js/main.js"></script>
 </html>
