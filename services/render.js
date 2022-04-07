@@ -28,6 +28,20 @@ exports.homeProduct = (req, res) => {
     })
 }
 
+exports.home = (req, res) => {
+  // Make a get request to /api/users
+  axios.get('http://localhost:3000/api/product')
+    .then(function (response) {
+      const admin = req.session.fullname
+      if (admin === undefined) {
+        res.render('index', { product: response.data })
+      } else res.render('index2', { product: response.data })
+    })
+    .catch(err => {
+      res.send(err)
+    })
+}
+
 exports.update_user = (req, res) => {
   axios.get('http://localhost:3000/api/users', { params: { id: req.query.id } })
     .then(function (userdata) {

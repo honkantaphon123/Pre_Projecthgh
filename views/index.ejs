@@ -48,65 +48,20 @@
 
     <section class="shop container">
       <h2 class="section-title">เมนูอาหาร</h2>
+      <% for(var i=0; i<product.length; i++) {%>
+        <div class="shop-content">
+          <div class="product-box">
+            <img src="<%= product[i].img %>" alt="" width="20" class="product-img">
+            <h2 class="product-title"><%= product[i].name %></h2>
+            <span class="price"><%= product[i].price %> บาท</span>
+          </div>     
+        </div>
+     <% } %>
       <!-- Content -->
-      <div class="shop-content">
- 
 
-        <div class="product-box">
-          <img src="/img/product1.jpg" alt="" class="product-img">
-          <h2 class="product-title">AEROREADY SHIRT</h2>
-          <span class="price">$25</span>
-         
-        </div>
 
-        <div class="product-box">
-          <img src="/img/product1.jpg" alt="" class="product-img">
-          <h2 class="product-title">BBB</h2>
-          <span class="price">$35</span>
-        
-        </div>
+       
 
-        <div class="product-box">
-          <img src="/img/product1.jpg" alt="" class="product-img">
-          <h2 class="product-title">CCC</h2>
-          <span class="price">$30</span>
-         
-        </div>
-
-        <div class="product-box">
-          <img src="/img/product1.jpg" alt="" class="product-img">
-          <h2 class="product-title">DDD</h2>
-          <span class="price">$15</span>
-          
-        </div>
-
-        <div class="product-box">
-          <img src="/img/product1.jpg" alt="" class="product-img">
-          <h2 class="product-title">EEE</h2>
-          <span class="price">$20</span>
-          
-        </div>
-
-        <div class="product-box">
-          <img src="/img/product1.jpg" alt="" class="product-img">
-          <h2 class="product-title">FFFF</h2>
-          <span class="price">$45</span>
-          
-        </div>
-
-        <div class="product-box">
-          <img src="/img/product1.jpg" alt="" class="product-img">
-          <h2 class="product-title">GGG</h2>
-          <span class="price">$45</span>
-          
-        </div>
-
-        <div class="product-box">
-          <img src="/img/product1.jpg" alt="" class="product-img">
-          <h2 class="product-title">HHHH</h2>
-          <span class="price">$55</span>
-      
-        </div>
   </section>
   </body>
   <script src="/js/main.js"></script>

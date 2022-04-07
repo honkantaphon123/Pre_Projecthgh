@@ -14,6 +14,7 @@ const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const services = require('./services/render')
 const controller = require('./controllers/controllers')
+const product = require('./models/Product')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -40,11 +41,11 @@ app.set('views', './views')
 app.set('view engine', 'ejs')
 
 // กำหนด Path ของ EJS
-app.get('/', (req, res) => {
-  const aa = req.session.fullname
-  if (aa) res.redirect('/index2')
-  res.render('index')
-})
+// app.get('/', (req, res) => {
+//   const aa = req.session.fullname
+//   if (aa) res.redirect('/index2')
+//   res.render('index')
+// })
 
 app.get('/logout', (req, res) => {
   req.session.destroy()
@@ -67,16 +68,13 @@ app.get('/add-product', (req, res) => {
   res.render('add_product', { msg: req.flash('msg') })
 })
 
-// app.get('/product', (req, res) => {
-//   res.render('product')
-// })
-
 app.get('/update-user', services.update_user)
 app.get('/update-product', services.update_product)
 app.get('/delete-user/:id', controller.delete)
 app.get('/delete-product/:id', controller.deleteProduct)
 app.get('/admin', (services.homeRoutes))
 app.get('/product', (services.homeProduct))
+app.get('/', (services.home))
 app.get('/api/users', controller.find)
 app.get('/api/product', controller.findProduct)
 
@@ -85,7 +83,7 @@ app.get('/index2', (req, res) => {
   if (aa === undefined) {
     res.redirect('/login')
   } if (aa) {
-    res.render('index2', { title: 'Express222', email: req.session.fullname })
+    res.render('index2', { email: req.session.fullname })
   }
 })
 
