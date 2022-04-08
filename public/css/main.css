@@ -70,7 +70,7 @@ header {
   min-height: 100vh;
   padding: 20px;
   background: rgb(255, 245, 245);
-  box-shadow: -2px e 4px hsl(0 4% 15% / 10%);
+  box-shadow: -2px 0px 4px hsl(0 4% 15% / 10%);
 }
 .cart.active {
   right: 0;
