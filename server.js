@@ -31,6 +31,7 @@ app.use(morgan('tiny'))
 app.use(cookieParser())
 app.use(session({
   secret: 'secret',
+  maxAge: 30000,
   resave: false,
   saveUninitialized: false
 }))

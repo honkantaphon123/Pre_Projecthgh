@@ -13,7 +13,7 @@
 :root {
   --main-color: #fd4646;
   --text-color: #171427;
-  --bg-color: #fff;
+  --bg-color: rgb(255, 255, 255);
 }
 img {
   width: 100%;
