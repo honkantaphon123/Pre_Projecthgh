@@ -3,7 +3,6 @@ const Product = require('../models/Product')
 
 router.get('/add-to-cart/:id', (req, res) => {
   const slug = req.params.id
-  console.log(slug)
   Product.findOne({ name: slug }, function (err, p) {
     if (err) { console.log(err) }
     if (typeof req.session.cart === 'undefined') {

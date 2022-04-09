@@ -61,13 +61,12 @@
                     <th>รวมทั้งหมด</th>
                 </tr>
                 <% cart.forEach (function (product) { %>
-                    <% var sub = parseFloat (product.qty * product.price).toFixed (2) %>
+                    <% var sub = parseInt (product.qty * product.price).toFixed (2) %>
                     <tr align="center">
                       <td><img src="<%= product.image %>" alt="" class="img"></td>
                       <td><%= product.title %></td>
                       <td><%= product.price %> บาท</td>
                       <td><%= product.qty %> รายการ</td>
-                      
                       <td><%= sub %></td>
                     </tr>
                     <% }); %>
