@@ -3,21 +3,21 @@ const Product = require('../models/Product')
 
 router.get('/add-to-cart/:id', (req, res) => {
   const slug = req.params.id
-  Product.findOne({ name: slug }, function (err, p) {
-    if (err) { console.log(err) }
+  Product.findOne({ _id: slug }, function (err, p) {
+    if (err) console.log(err)
     if (typeof req.session.cart === 'undefined') {
       req.session.cart = []
       req.session.cart.push({
-        title: slug,
+        title: p.name,
         qty: 1,
-        price: parseFloat(p.price),
+        price: p.price,
         image: p.img
       })
     } else {
       const cart = req.session.cart
       let newItem = true
       for (let i = 0; i < cart.length; i++) {
-        if (cart[i].title === slug) {
+        if (cart[i].title === p.name) {
           cart[i].qty++
           newItem = false
           break
@@ -25,9 +25,9 @@ router.get('/add-to-cart/:id', (req, res) => {
       }
       if (newItem) {
         cart.push({
-          title: slug,
+          title: p.name,
           qty: 1,
-          price: parseFloat(p.price),
+          price: p.price,
           image: p.img
         })
       }
@@ -45,4 +45,5 @@ router.get('/checkout', function (req, res) {
     msg: req.flash('msg')
   })
 })
+
 module.exports = router
