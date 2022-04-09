@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <title>MiniMart</title>
+    <!-- Link To CSS -->
+    <link rel="stylesheet" href="/css/main.css" type="text/css" />
+    <!-- Box Icons -->
+
+  </head>
+  <body>
+    <style>
+        img {
+          border: 1px solid #ddd; /* Gray border */
+          border-radius: 4px;  /* Rounded border */
+          padding: 0px; /* Some padding */
+          width: 55px; /* Set a small width */
+        }
+        
+        /* Add a hover effect (blue shadow) */
+        img:hover {
+          box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+        }
+       
+}
+        </style>
+    <!-- Header -->
+    <header>
+      <!-- nav -->
+      <div class="nav container">
+        <a href="/" class="logo">FoodManda</a>
+        <!-- Cart-Icon -->
+        <ul>
+          <li class="nav-item active">
+            <a href="" class="menu">สวัสดีคุณ <%= username %><a>
+            <a href="/checkout" class="menu">ตะกร้าสินค้า<a></a>
+            <a href="#" class="menu">ออเดอร์สินค้า<a></a>
+          <a href="/logout" class="menu">Logout</a>
+</li>
+
+        </ul>
+
+      </div> 
+    </header>
+
+    <section class="shop container">
+      <h2 class="section-title">รายการสินค้าที่สั่ง</h2>
+      <!-- Content -->
+
+      <% if (typeof cart !== "undefined") {%>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr align="center">
+                    <th>รูปสินค้า</th>
+                    <th>ชื่อสินค้า</th>
+                    <th>ราคา</th>
+                    <th>จำนวน</th>
+                    <th>รวมทั้งหมด</th>
+                </tr>
+                <% cart.forEach (function (product) { %>
+                    <% var sub = parseFloat (product.qty * product.price).toFixed (2) %>
+                    <tr align="center">
+                      <td><img src="<%= product.image %>" alt="" class="img"></td>
+                      <td><%= product.title %></td>
+                      <td><%= product.price %> บาท</td>
+                      <td><%= product.qty %> รายการ</td>
+                      
+                      <td><%= sub %></td>
+                    </tr>
+                    <% }); %>
+            </thead>
+        <% } else {%>
+        <h3 class="text-center">Your cart is empty.</h3>
+    <% } %>
+ 
+        
+
+
+  </section>
+  </body>
+  <script src="/js/main.js"></script>
+</html>

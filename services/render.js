@@ -32,10 +32,10 @@ exports.home = (req, res) => {
   // Make a get request to /api/users
   axios.get('http://localhost:3000/api/product')
     .then(function (response) {
-      const admin = req.session.fullname
-      if (admin === undefined) {
+      const user = req.session.fullname
+      if (user === undefined) {
         res.render('index', { product: response.data })
-      } else res.render('index2', { product: response.data, email: req.session.fullname })
+      } else res.render('index2', { product: response.data, username: req.session.fullname, msg: req.flash('msg') })
     })
     .catch(err => {
       res.send(err)

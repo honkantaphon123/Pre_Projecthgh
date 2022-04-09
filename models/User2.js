@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
 const Schema = mongoose.Schema
+const Product = require('./Product')
 
 const userSchema = new Schema({
   fullname: {
@@ -31,14 +32,6 @@ const userSchema = new Schema({
     default: false
   }
 
-})
-
-// schema middleware to apply before saving
-userSchema.pre('save', async function (next) {
-  // hash the password, set hash cost to 12
-  this.password = await bcrypt.hash(this.password, 12)
-
-  next()
 })
 
 const User = mongoose.model('User', userSchema)

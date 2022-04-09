@@ -8,13 +8,13 @@ const flush = require('connect-flash')
 const errorController = require('./controllers/errorController')
 const authRouter = require('./routes/authRouter')
 const productRouter = require('./routes/product')
-const morgan = require('morgan')
+const cartRouter = require('./routes/cart')
+// const morgan = require('morgan')
 const cors = require('cors')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const services = require('./services/render')
 const controller = require('./controllers/controllers')
-const product = require('./models/Product')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -27,11 +27,10 @@ app.use(express.static('public'))
 app.use(express.static('uploads'))
 app.use(errorController)
 app.use(cors())
-app.use(morgan('tiny'))
+// app.use(morgan('tiny'))
 app.use(cookieParser())
 app.use(session({
   secret: 'secret',
-  maxAge: 30000,
   resave: false,
   saveUninitialized: false
 }))
@@ -39,13 +38,6 @@ app.use(session({
 // Set EJS as templating engine
 app.set('views', './views')
 app.set('view engine', 'ejs')
-
-// กำหนด Path ของ EJS
-// app.get('/', (req, res) => {
-//   const aa = req.session.fullname
-//   if (aa) res.redirect('/index2')
-//   res.render('index')
-// })
 
 app.get('/logout', (req, res) => {
   req.session.destroy()
@@ -68,6 +60,9 @@ app.get('/add-product', (req, res) => {
   res.render('add_product', { msg: req.flash('msg') })
 })
 
+app.get('/add-to-cart/:id', cartRouter)
+app.get('/checkout', cartRouter)
+
 app.get('/update-user', services.update_user)
 app.get('/update-product', services.update_product)
 app.get('/delete-user/:id', controller.delete)
@@ -82,6 +77,7 @@ app.get('/api/product', controller.findProduct)
 // เรียกใช้งาน Routes
 app.use('/auth/', authRouter)
 app.use('/auth/product', productRouter)
+
 // Step 9 - configure the server's port
 app.listen(3000, () => console.log('Server Started'))
 
