@@ -56,23 +56,21 @@
                 <tr align="center">
                     <th>รูปสินค้า</th>
                     <th>ชื่อสินค้า</th>
-                    <th>ราคา</th>
                     <th>จำนวน</th>
-                    <th>รวมทั้งหมด</th>
+                    <th>ราคา</th>
                 </tr>
                 <% cart.forEach (function (product) { %>
                     <% var sub = parseInt (product.qty * product.price).toFixed (2) %>
                     <tr align="center">
                       <td><img src="<%= product.image %>" alt="" class="img"></td>
                       <td><%= product.title %></td>
-                      <td><%= product.price %> บาท</td>
                       <td><%= product.qty %> รายการ</td>
                       <td><%= sub %></td>
                     </tr>
                     <% }); %>
             </thead>
         <% } else {%>
-        <h3 class="text-center">Your cart is empty.</h3>
+        <h3 class="text-center">ไม่มีรายการสินค้าที่เพิ่มไว้</h3>
     <% } %>
  
         
