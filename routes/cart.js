@@ -2,8 +2,9 @@ const router = require('express').Router()
 const Product = require('../models/Product')
 
 router.get('/add-to-cart/:id', (req, res) => {
-  var slug = req.params.id
-  Product.findOne({ slug: 'หมูสามชั้นทอดน้ำปลา' }, function (err, p) {
+  const slug = req.params.id
+  console.log(slug)
+  Product.findOne({ name: slug }, function (err, p) {
     if (err) { console.log(err) }
     if (typeof req.session.cart === 'undefined') {
       req.session.cart = []
@@ -14,8 +15,8 @@ router.get('/add-to-cart/:id', (req, res) => {
         image: p.img
       })
     } else {
-      var cart = req.session.cart
-      var newItem = true
+      const cart = req.session.cart
+      let newItem = true
       for (let i = 0; i < cart.length; i++) {
         if (cart[i].title === slug) {
           cart[i].qty++
