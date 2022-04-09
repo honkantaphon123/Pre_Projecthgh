@@ -44,7 +44,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 20px ;
 }
 .logo {
   font-size: 1.2rem;
@@ -53,6 +53,7 @@ header {
 }
 
 .menu {
+  padding: 15px 0;
   margin-left: 20px;
   font-size: 1.2rem;
   color: black;

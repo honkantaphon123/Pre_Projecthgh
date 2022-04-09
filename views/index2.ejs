@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    
     <title>MiniMart</title>
     <!-- Link To CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Box Icons -->
     <link
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
@@ -20,6 +21,12 @@
         height: 700px;
         overflow-y: scroll;
       }
+      ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  
+}
 </style>
   </head>
   <body>
@@ -27,14 +34,15 @@
     <header>
       <!-- nav -->
       <div class="nav container">
-        <a href="#" class="logo">FoodManda</a>
+        <a href="/" class="logo"><i class="fa fa-cutlery" aria-hidden="true"></i> FoodManda</a>
         <!-- Cart-Icon -->
-        <ul>
+        <ul style="line-height:10%">
           <li class="nav-item active">
           <!-- <i class="bx bx-shopping-bag" id="cart-icon"></i> -->
-            <a href="#" class="menu">สวัสดีคุณ <%= username %><a>
-            <a href="/checkout" class="menu">ตะกร้าสินค้า<a></a>
-            <a href="#" class="menu">ออเดอร์สินค้า<a></a>
+          <a href="#" class="menu"><i class="fa fa-user" style="font-size:20px;color:black"></i> สวัสดีคุณ <%= username %><a>
+            <a href="/checkout" class="menu"> <i class="fa fa-shopping-cart" style="font-size:20px;color:black"></i> ตะกร้าสินค้า</span>
+            </a>
+            <a href="#" class="menu"><i class="fa fa-archive" style="font-size:20px"></i> ออเดอร์ที่สั่ง<a></a>
           <a href="/logout" class="menu">Logout</a>
           </li>
 
@@ -65,7 +73,7 @@
       <div class="shop-content">
  
         <% for(var i = 0; i < product.length; i++) { %>
-        <div class="product-box">
+        <div class="product-box" >
           <img src="<%=  product[i].img %>" alt="" class="product-img">
           <h2 class="product-title"><%=  product[i].name %></h2>
           ราคา <span class="price"><%=  product[i].price %> บาท</span>
@@ -76,7 +84,7 @@
          
          <form action="/add-to-cart/<%= product[i]._id %>" method="get">
           
-          <button type="submit" class="btn btn-primary">Add to Cart</button>
+          <button type="submit" class="btn btn-primary">Add to Cart <i class="fa fa-cart-plus" style="font-size:15px" aria-hidden="true"></i></button>
         </form>
         </div>
         <% } %>

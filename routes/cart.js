@@ -3,6 +3,7 @@ const Product = require('../models/Product')
 
 router.get('/add-to-cart/:id', (req, res) => {
   const slug = req.params.id
+  let count
   Product.findOne({ _id: slug }, function (err, p) {
     if (err) console.log(err)
     if (typeof req.session.cart === 'undefined') {
@@ -19,6 +20,7 @@ router.get('/add-to-cart/:id', (req, res) => {
       for (let i = 0; i < cart.length; i++) {
         if (cart[i].title === p.name) {
           cart[i].qty++
+
           newItem = false
           break
         }
@@ -35,6 +37,8 @@ router.get('/add-to-cart/:id', (req, res) => {
     console.log(req.session.cart)
     res.redirect('back')
   })
+  count += 1
+  console.log(count)
 })
 
 router.get('/checkout', function (req, res) {
