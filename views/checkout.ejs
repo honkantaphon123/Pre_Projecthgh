@@ -55,7 +55,7 @@ ul {
             <a href="/checkout" class="menu"> <i class="fa fa-shopping-cart" style="font-size:20px;color:black"></i> ตะกร้าสินค้า</span>
             </a>
             <a href="#" class="menu"><i class="fa fa-archive" style="font-size:20px"></i> ออเดอร์ที่สั่ง<a></a>
-          <a href="/logout" class="menu">Logout</a>
+            <a href="/logout" class="menu"><i class="fa fa-sign-in" aria-hidden="true"></i> ออกจากระบบ</a>
           </li>
 
         </ul>
@@ -87,7 +87,7 @@ ul {
                         <a href="/cart/update/<%= product.title %>?action=remove">-</a>&nbsp;
                         <b>&emsp;<%= product.qty %>&emsp;</b>   
                         <a href="/cart/update/<%= product.title %>?action=add">+</a>&nbsp;  
-                        <a href="/cart/update/<%= product.title %>?action=clear">clear</a>&nbsp;
+                        <a href="/cart/update/<%= product.title %>?action=clear"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;
                       </td>
                       <td><%= sub %></td>
                      
