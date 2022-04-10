@@ -63,6 +63,8 @@ app.get('/add-product', (req, res) => {
 
 app.get('/add-to-cart/:id', cartRouter)
 app.get('/checkout', cartRouter)
+app.get('/update/:product', cartRouter)
+app.get('/clear', cartRouter)
 
 app.get('/update-user', services.update_user)
 app.get('/update-product', services.update_product)

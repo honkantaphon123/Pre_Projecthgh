@@ -51,7 +51,7 @@ ul {
         <ul style="line-height:10%">
           <li class="nav-item active">
           <!-- <i class="bx bx-shopping-bag" id="cart-icon"></i> -->
-          <a href="#" class="menu"><i class="fa fa-user" style="font-size:20px;color:black"></i> สวัสดีคุณ <%= username %><a>
+          <a href="#" class="menu"><i class="fa fa-user" style="font-size:20px;color:black"></i> สวัสดีคุณ <%= username.split(" ")[0] %><a>
             <a href="/checkout" class="menu"> <i class="fa fa-shopping-cart" style="font-size:20px;color:black"></i> ตะกร้าสินค้า</span>
             </a>
             <a href="#" class="menu"><i class="fa fa-archive" style="font-size:20px"></i> ออเดอร์ที่สั่ง<a></a>
@@ -84,10 +84,10 @@ ul {
                       <td><img src="<%= product.image %>" alt="" class="img"></td>
                       <td><%= product.title %></td>
                       <td>
-                        <a href="/cart/update/<%= product.title %>?action=remove">-</a>&nbsp;
+                        <a href="/update/<%= product.title %>?action=remove">-</a>&nbsp;
                         <b>&emsp;<%= product.qty %>&emsp;</b>   
-                        <a href="/cart/update/<%= product.title %>?action=add">+</a>&nbsp;  
-                        <a href="/cart/update/<%= product.title %>?action=clear"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;
+                        <a href="/update/<%= product.title %>?action=add">+</a>&nbsp;  
+                        <a href="/update/<%= product.title %>?action=clear"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;
                       </td>
                       <td><%= sub %></td>
                      
@@ -104,7 +104,7 @@ ul {
                     <td></td>
                     <td></td>
                     <td>
-                      <a class="btn btn-danger" href="/cart/clear">เคลียร์</a>
+                      <a class="btn btn-danger" href="/clear">เคลียร์</a>
                       <a class="btn btn-success" href="/cart/submit"> สั่งซื้อ</a>
                     </td>
 

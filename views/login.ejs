@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>Login and Registration</title>
+    <title>เข้าสู่ระบบ</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -17,8 +17,8 @@
   <body>
     <div class="wrapper">
       <div class="title-text">
-        <div class="title login">LogIn</div>
-        <div class="title signup">SignUp</div>
+        <div class="title login">เข้าสู่ระบบ</div>
+        <div class="title signup">สมัครสมาชิก</div>
       </div>
       <div class="form-container">
         <% if (msg.length > 0) { %>
@@ -30,7 +30,7 @@
               <input
                 type="email"
                 name="email"
-                placeholder="Email Address"
+                placeholder="อีเมล"
                 required
               />
             </div>
@@ -38,13 +38,13 @@
               <input
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="รหัสผ่าน"
                 required
               />
             </div>
             <div class="field btn">
               <div class="btn-layer"></div>
-              <input type="submit" value="Login" />
+              <input type="submit" value="เข้าสู่ระบบ" />
             </div>
             <div class="signup-link">
               Not a member? <a href="/register">Signup now</a>

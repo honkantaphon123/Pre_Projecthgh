@@ -39,7 +39,7 @@
         <ul style="line-height:10%">
           <li class="nav-item active">
           <!-- <i class="bx bx-shopping-bag" id="cart-icon"></i> -->
-          <a href="#" class="menu"><i class="fa fa-user" style="font-size:20px;color:black"></i> สวัสดีคุณ <%= username %><a>
+          <a href="#" class="menu"><i class="fa fa-user" style="font-size:20px;color:black"></i> สวัสดีคุณ <%= username.split(" ")[0] %><a>
             <a href="/checkout" class="menu"> <i class="fa fa-shopping-cart" style="font-size:20px;color:black"></i> ตะกร้าสินค้า</span>
             </a>
             <a href="#" class="menu"><i class="fa fa-archive" style="font-size:20px"></i> ออเดอร์ที่สั่ง<a></a>
@@ -84,7 +84,7 @@
          
          <form action="/add-to-cart/<%= product[i]._id %>" method="get">
           
-          <button type="submit" class="btn btn-primary">Add to Cart <i class="fa fa-cart-plus" style="font-size:15px" aria-hidden="true"></i></button>
+          <button type="submit" class="btn btn-primary">เพิ่มสินค้า <i class="fa fa-cart-plus" style="font-size:15px" aria-hidden="true"></i></button>
         </form>
         </div>
         <% } %>
