@@ -70,6 +70,20 @@ exports.orderAdmin = (req, res) => {
     })
 }
 
+exports.orderView = (req, res) => {
+  // Make a get request to /api/users
+  axios.get('http://localhost:3000/api/orderView', { params: { id: req.query.id } })
+    .then(function (response) {
+      const admin = req.session.fullname
+      if (admin === undefined) {
+        res.render('login')
+      } else res.render('viewOrder', { order: response.data, username: req.session.fullname, userid: req.session._id, id: req.query.id })
+    })
+    .catch(err => {
+      res.send(err)
+    })
+}
+
 exports.update_user = (req, res) => {
   axios.get('http://localhost:3000/api/users', { params: { id: req.query.id } })
     .then(function (userdata) {

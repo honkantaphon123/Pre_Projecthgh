@@ -23,4 +23,6 @@ router.post('/product/update', upload, authController.updateProduct)
 
 router.post('/login', authController.Login)
 
+router.post('/accept', authController.accept)
+
 module.exports = router

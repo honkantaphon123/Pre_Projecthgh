@@ -80,6 +80,8 @@ app.get('/api/users', controller.find)
 app.get('/api/product', controller.findProduct)
 app.get('/api/order', controller.findOrder)
 app.get('/api/orderAdmin', controller.findOrderAdmin)
+app.get('/api/orderView', controller.viewOrder)
+app.get('/viewOrder', (services.orderView))
 
 // เรียกใช้งาน Routes
 app.use('/auth/', authRouter)

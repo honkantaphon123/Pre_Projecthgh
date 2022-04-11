@@ -1,5 +1,6 @@
 const User = require('../models/User2')
 const Product = require('../models/Product')
+const Order = require('../models/Order')
 // const AppError = require('../utils/AppError')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
@@ -162,6 +163,25 @@ exports.updateProduct = (req, res) => {
     })
     .catch(err => {
       req.flash('msg', 'Product Name is duplicate')
+      res.redirect('back')
+    })
+}
+
+exports.accept = (req, res) => {
+  const id = req.body.id
+  console.log(id)
+  Order.findById(id, {
+    status: 'Success'
+
+  }, { useFindAndModify: false })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({ message: `Cannot Update user with ${id}. Maybe user not found!` })
+      } else {
+        res.redirect('/orderAdmin')
+      }
+    })
+    .catch(err => {
       res.redirect('back')
     })
 }

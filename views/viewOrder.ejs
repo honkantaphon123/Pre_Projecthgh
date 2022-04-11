@@ -8,6 +8,9 @@
     <main id="site-main">
         <div class="container">
             <div class="box-nav d-flex justify-between">
+                <a href="javascript:javascript:history.go(-1)" class="border-shadow">
+                    <span class="text-gradient">Back</span>
+                </a>
             </div>
 
             <!-- form handling -->
@@ -16,16 +19,18 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>ID</th>
-                            <th>Fullname</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                            <th>More</th>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <%- include('include/showOrder') %>
+                        <%- include('include/showView') %>
                     </tbody>
+                    
                 </table>
+            </form>
+            <form action="./auth/accept" method="post" align="right">
+                <input type="submit" value="Confirm Order" class="btn btn-success"/>
             </form>
         </div>
     </main>

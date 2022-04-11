@@ -57,7 +57,6 @@ exports.findOrder = (req, res) => {
   Order.find({ username: aa })
     .then(user => {
       res.send(user)
-      console.log(aa)
     })
     .catch(err => {
       res.status(500).send({ message: err.message || 'Error Occurred while retriving user information' })
@@ -66,6 +65,17 @@ exports.findOrder = (req, res) => {
 
 exports.findOrderAdmin = (req, res) => {
   Order.find()
+    .then(user => {
+      res.send(user)
+    })
+    .catch(err => {
+      res.status(500).send({ message: err.message || 'Error Occurred while retriving user information' })
+    })
+}
+
+exports.viewOrder = (req, res) => {
+  const bb = req.query.id
+  Order.find({ _id: bb })
     .then(user => {
       res.send(user)
     })
