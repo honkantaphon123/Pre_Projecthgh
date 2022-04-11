@@ -1,8 +1,6 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
 const validator = require('validator')
 const Schema = mongoose.Schema
-const Product = require('./Product')
 
 const userSchema = new Schema({
   fullname: {

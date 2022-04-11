@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Product = require('../models/Product')
+const Order = require('../models/Order')
 
 router.get('/add-to-cart/:id', (req, res) => {
   const slug = req.params.id
@@ -77,6 +78,32 @@ router.get('/update/:product', function (req, res) {
 router.get('/clear', function (req, res) {
   delete req.session.cart
   res.redirect('back')
+})
+
+router.get('/order/:id', function (req, res) {
+  res.render('order', {
+    cart: req.session.cart,
+    username: req.session.fullname,
+    msg: req.flash('msg')
+  })
+})
+
+router.post('/submit', function (req, res, next) {
+  try {
+    const order = new Order({
+      username: req.session.fullname,
+      total: req.body.total,
+      orderlist: req.body.orderlist,
+      qty: req.body.qty2
+
+    })
+    order.save()
+    delete req.session.cart
+  } catch (err) {
+    next(err)
+    res.redirect('/checkout')
+  }
+  res.redirect('/index2')
 })
 
 module.exports = router

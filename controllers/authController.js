@@ -41,11 +41,13 @@ const createUserToken2 = async (user, code, req, res) => {
 exports.registerUser = async (req, res, next) => {
   // pass in request data here to create user from user schema
   try {
+    const salt = await bcrypt.genSalt(10)
+    const hashPass = await bcrypt.hash(req.body.password, salt)
     const newUser = await User.create({
       fullname: req.body.fullname,
       telephone: req.body.telephone,
       email: req.body.email,
-      password: req.body.password
+      password: hashPass
 
     })
 
@@ -61,11 +63,13 @@ exports.registerUser = async (req, res, next) => {
 exports.registerByadmin = async (req, res, next) => {
   // pass in request data here to create user from user schema
   try {
+    const salt = await bcrypt.genSalt(10)
+    const hashPass = await bcrypt.hash(req.body.password, salt)
     const newUser = await User.create({
       fullname: req.body.fullname,
       telephone: req.body.telephone,
       email: req.body.email,
-      password: req.body.password
+      password: hashPass
 
     })
     createUserToken2(newUser, 201, req, res)

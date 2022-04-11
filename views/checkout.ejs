@@ -54,7 +54,7 @@ ul {
           <a href="#" class="menu"><i class="fa fa-user" style="font-size:20px;color:black"></i> สวัสดีคุณ <%= username.split(" ")[0] %><a>
             <a href="/checkout" class="menu"> <i class="fa fa-shopping-cart" style="font-size:20px;color:black"></i> ตะกร้าสินค้า</span>
             </a>
-            <a href="#" class="menu"><i class="fa fa-archive" style="font-size:20px"></i> ออเดอร์ที่สั่ง<a></a>
+            <a href="/order?id=<%= username %>" class="menu"><i class="fa fa-archive" style="font-size:20px"></i> ออเดอร์ที่สั่ง<a></a>
             <a href="/logout" class="menu"><i class="fa fa-sign-in" aria-hidden="true"></i> ออกจากระบบ</a>
           </li>
 
@@ -105,11 +105,24 @@ ul {
                     <td></td>
                     <td>
                       <a class="btn btn-danger" href="/clear">เคลียร์</a>
-                      <a class="btn btn-success" href="/cart/submit"> สั่งซื้อ</a>
+                      <form action="./submit" method="post">
+                        <% var orderlist = [] %>
+                        <% var qty2 = [] %>
+                        <% for(var i = 0; i < cart.length; i++) { %>
+                          <% orderlist[i] = cart[i].title  %>
+                          <% qty2[i] = cart[i].qty  %>
+                        <% } %>
+                          <input type="hidden" name="orderlist" value="<%= orderlist %>" />
+                          <input type="hidden" name="qty2" value="<%= qty2 %>" />
+                        <input type="hidden" name="total" value="<%= total %>" />
+                        <input type="submit" value="สั่งซื้อ" class="btn btn-success"/>
+                      </form>
+                      
                     </td>
 
                   </tr>
 
+                  
  
             </thead>
         <% } else {%>

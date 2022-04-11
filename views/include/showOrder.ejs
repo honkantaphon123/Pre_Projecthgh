@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+<% for(var i = 0; i < order.length; i++) { %>
+    <% if (order[i].isAdmin != true ) { %>
+    <tr>
+
+        
+        <td><%= i + 1 %></td>
+        <td><%= order[i].username %></td>
+        <td><%= order[i].total %></td>
+        <td><%= order[i].status %></td>
+        <td><a href="#" style="font-size:18px"></i>view</a></td>
+        <input type="hidden" name="id" value="<%= order[i]._id %>">
+        
+    </tr>
+    <% } %>
+    <% } %>

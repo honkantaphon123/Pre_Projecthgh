@@ -63,9 +63,11 @@ app.get('/add-product', (req, res) => {
 
 app.get('/add-to-cart/:id', cartRouter)
 app.get('/checkout', cartRouter)
+app.get('/order', (services.order))
+app.get('/orderAdmin', (services.orderAdmin))
 app.get('/update/:product', cartRouter)
 app.get('/clear', cartRouter)
-
+app.post('/submit', cartRouter)
 app.get('/update-user', services.update_user)
 app.get('/update-product', services.update_product)
 app.get('/delete-user/:id', controller.delete)
@@ -76,6 +78,8 @@ app.get('/', (services.home))
 app.get('/index2', (services.home))
 app.get('/api/users', controller.find)
 app.get('/api/product', controller.findProduct)
+app.get('/api/order', controller.findOrder)
+app.get('/api/orderAdmin', controller.findOrderAdmin)
 
 // เรียกใช้งาน Routes
 app.use('/auth/', authRouter)

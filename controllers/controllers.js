@@ -1,5 +1,6 @@
 const User = require('../models/User2')
 const Product = require('../models/Product')
+const Order = require('../models/Order')
 exports.find = (req, res) => {
   if (req.query.id) {
     const id = req.query.id
@@ -51,6 +52,28 @@ exports.findProduct = (req, res) => {
   }
 }
 
+exports.findOrder = (req, res) => {
+  const aa = req.query.id
+  Order.find({ username: aa })
+    .then(user => {
+      res.send(user)
+      console.log(aa)
+    })
+    .catch(err => {
+      res.status(500).send({ message: err.message || 'Error Occurred while retriving user information' })
+    })
+}
+
+exports.findOrderAdmin = (req, res) => {
+  Order.find()
+    .then(user => {
+      res.send(user)
+    })
+    .catch(err => {
+      res.status(500).send({ message: err.message || 'Error Occurred while retriving user information' })
+    })
+}
+
 exports.update = (req, res) => {
   if (!req.body) {
     return res
@@ -98,7 +121,7 @@ exports.deleteProduct = (req, res) => {
       if (!data) {
         res.status(404).send({ message: `Cannot Delete with id ${id}. Maybe id is wrong` })
       } else {
-        res.redirect('back')
+        res.send(data)
       }
     })
     .catch(err => {
