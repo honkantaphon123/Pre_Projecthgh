@@ -170,7 +170,7 @@ exports.updateProduct = (req, res) => {
 exports.accept = (req, res) => {
   const id = req.body.id
   console.log(id)
-  Order.findById(id, {
+  Order.findByIdAndUpdate({ _id: id }, {
     status: 'Success'
 
   }, { useFindAndModify: false })
