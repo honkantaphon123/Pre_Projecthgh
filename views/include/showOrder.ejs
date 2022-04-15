@@ -6,7 +6,7 @@
         
         <td><%= i + 1 %></td>
         <td><%= order[i].username %></td>
-        <td><%= order[i].total %></td>
+        <td><%= order[i].total %> บาท</td>
         <td><%= order[i].status %></td>
         <td><a href="/viewOrder?id=<%= order[i]._id%>" style="font-size:18px"></i>view</a></td>
         <input type="hidden" name="id" value="<%= order[i]._id %>">

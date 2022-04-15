@@ -26,9 +26,9 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email })
-    !user && res.status(400).json('Wrong E-mail')
+    !user && res.status(400).json('อีเมลไม่ถูกต้อง')
     const validated = await bcrypt.compare(req.body.password, user.password)
-    !validated && res.status(422).json('Incorrect Password')
+    !validated && res.status(422).json('รหัสผ่านไม่ถูกต้อง')
     // const { password, ...others } = user._doc // Because we not sending password
     res.status(200).json('Login Success!!!')
     // req.flash('message', 'Login Success!!!')

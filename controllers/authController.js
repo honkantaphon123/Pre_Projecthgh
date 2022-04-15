@@ -56,7 +56,7 @@ exports.registerUser = async (req, res, next) => {
     // if user can't be created, throw an error
   } catch (err) {
     next(err)
-    req.flash('msg', 'Telephone or E-mail already exists')
+    req.flash('msg', 'โทรศัพท์หรืออีเมลเคยใช้งานแล้ว')
     res.redirect('/register')
   }
 }
@@ -90,12 +90,12 @@ exports.Login = async (req, res, next) => {
       req.session._id = user._id
     }
     if (!user) {
-      req.flash('msg', 'Wrong E-mail')
+      req.flash('msg', 'อีเมลไม่ถูกต้อง')
       res.redirect('/login')
     }
     const validated = await bcrypt.compare(req.body.password, user.password)
     if (validated === false) {
-      req.flash('msg', 'Wrong Password')
+      req.flash('msg', 'รหัสผ่านไม่ถูกต้อง')
       res.redirect('/login')
     }
     const admin = user.isAdmin
