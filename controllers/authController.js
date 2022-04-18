@@ -71,6 +71,7 @@ exports.registerByadmin = async (req, res, next) => {
       fullname: req.body.fullname,
       telephone: req.body.telephone,
       email: req.body.email,
+      room: req.body.room,
       password: hashPass
 
     })
