@@ -99,6 +99,7 @@ router.post('/submit', function (req, res, next) {
   try {
     const order = new Order({
       username: req.session.fullname,
+      telephone: req.body.telephone,
       price: req.body.price,
       total: req.body.total,
       orderlist: req.body.orderlist,

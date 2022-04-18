@@ -10,13 +10,15 @@
         <td><%= product.price[i] %></td>   
     </tr>
     <% } %> 
-    <input type="submit" value="Confirm Order" class="btn btn-success" />
+    <p><b>ชื่อ : </b><%= product.username %>&nbsp<b> เบอร์โทรศัพท์ : </b><%= product.telephone %></p>
   <% });%>
   <tr align="center">
     <td></td>
     <td></td>
     <td></td>
-    <td><b>รวม: </b>฿<%= total %></td>    
+    <td><b>รวม: </b>฿<%= total %></td>
 </tr>
+
+
 
 

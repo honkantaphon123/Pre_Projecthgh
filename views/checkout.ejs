@@ -65,10 +65,10 @@ ul {
 
     <section class="shop container">
       <h2 class="section-title">รายการสินค้าที่สั่ง</h2>
-      <p><b>ชื่อ : </b><%= username %>&nbsp<b> เบอร์โทรศัพท์ : </b><%= telephone %></p>
       <!-- Content -->
 
       <% if (typeof cart !== "undefined") {%>
+        <p><b>ชื่อ : </b><%= username %>&nbsp<b> เบอร์โทรศัพท์ : </b><%= telephone %></p>
         <table class="table">
             <thead class="thead-dark">
                 <tr align="center">
@@ -118,7 +118,7 @@ ul {
                           <input type="hidden" name="price" value="<%= sub %>" />
                         <% });%>
                         <input type="hidden" name="total" value="<%= total %>" />
-                        
+                        <input type="hidden" name="telephone" value="<%= telephone %>" />
                         <input type="submit" value="สั่งซื้อ" class="btn btn-success"/>
                       </form>
                       
