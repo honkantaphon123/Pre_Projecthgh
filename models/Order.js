@@ -2,9 +2,11 @@ const mongoose = require('mongoose')
 const OrderSchema = new mongoose.Schema(
   {
     username: { type: String },
+    price: { type: Array },
     total: { type: Array },
-    orderlist: { type: String },
-    qty: { type: String },
+    orderlist: { type: Array },
+    qty: { type: Array },
+    cart: { type: String },
     status: {
       type: String,
       default: 'pending'

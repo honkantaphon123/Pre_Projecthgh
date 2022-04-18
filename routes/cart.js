@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const Product = require('../models/Product')
 const Order = require('../models/Order')
+const User = require('../models/User2')
 
 router.get('/add-to-cart/:id', (req, res) => {
   const slug = req.params.id
@@ -40,11 +41,17 @@ router.get('/add-to-cart/:id', (req, res) => {
 })
 
 router.get('/checkout', function (req, res) {
-  res.render('checkout', {
-    title: 'Checkout',
-    cart: req.session.cart,
-    username: req.session.fullname,
-    msg: req.flash('msg')
+  User.findOne({ fullname: req.session.fullname }, function (err, p) {
+    if (err) console.log(err)
+    else {
+      res.render('checkout', {
+        title: 'Checkout',
+        cart: req.session.cart,
+        username: req.session.fullname,
+        telephone: p.telephone,
+        msg: req.flash('msg')
+      })
+    }
   })
 })
 
@@ -92,9 +99,11 @@ router.post('/submit', function (req, res, next) {
   try {
     const order = new Order({
       username: req.session.fullname,
+      price: req.body.price,
       total: req.body.total,
       orderlist: req.body.orderlist,
-      qty: req.body.qty2
+      qty: req.body.qty2,
+      cart: req.body.cart
 
     })
     order.save()

@@ -65,6 +65,7 @@ ul {
 
     <section class="shop container">
       <h2 class="section-title">รายการสินค้าที่สั่ง</h2>
+      <p><b>ชื่อ : </b><%= username %>&nbsp<b> เบอร์โทรศัพท์ : </b><%= telephone %></p>
       <!-- Content -->
 
       <% if (typeof cart !== "undefined") {%>
@@ -106,15 +107,18 @@ ul {
                     <td>
                       <a class="btn btn-danger" href="/clear">เคลียร์</a>
                       <form action="./submit" method="post">
-                        <% var orderlist = [] %>
+                        <% var orderlist %>
                         <% var qty2 = [] %>
-                        <% for(var i = 0; i < cart.length; i++) { %>
-                          <% orderlist[i] = cart[i].title  %>
-                          <% qty2[i] = cart[i].qty  %>
-                        <% } %>
+                        <% cart.forEach (function (product) { %>
+                          <% var sub = parseInt (product.qty * product.price).toFixed (2) %>
+                          <% orderlist = product.title %>
+                          <% qty2 = product.qty %>
                           <input type="hidden" name="orderlist" value="<%= orderlist %>" />
                           <input type="hidden" name="qty2" value="<%= qty2 %>" />
+                          <input type="hidden" name="price" value="<%= sub %>" />
+                        <% });%>
                         <input type="hidden" name="total" value="<%= total %>" />
+                        
                         <input type="submit" value="สั่งซื้อ" class="btn btn-success"/>
                       </form>
                       
