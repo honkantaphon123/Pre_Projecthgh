@@ -39,9 +39,7 @@ ul {
   padding: 0;
   
 }
-
-
-        </style>
+</style>
     <!-- Header -->
     <header>
       <!-- nav -->
@@ -68,7 +66,9 @@ ul {
       <!-- Content -->
 
       <% if (typeof cart !== "undefined") {%>
-        <p><b>ชื่อ : </b><%= username %>&nbsp<b> เบอร์โทรศัพท์ : </b><%= telephone %>&nbsp<b> เลขที่ห้อง : </b><%= room %></p>
+        <h4>
+          ชื่อ : <%= username %>&nbsp เบอร์โทรศัพท์ : <%= telephone %>&nbspเลขที่ห้อง : <%= room %>
+        </h4>
         <table class="table">
             <thead class="thead-dark">
                 <tr align="center">
@@ -105,8 +105,9 @@ ul {
                     <td></td>
                     <td></td>
                     <td>
-                      <a class="btn btn-danger" href="/clear">เคลียร์</a>
+                      
                       <form action="./submit" method="post">
+                        <a class="btn btn-danger" href="/clear">เคลียร์</a>
                         <% var orderlist %>
                         <% var qty2 = [] %>
                         <% cart.forEach (function (product) { %>
