@@ -68,7 +68,7 @@ ul {
       <!-- Content -->
 
       <% if (typeof cart !== "undefined") {%>
-        <p><b>ชื่อ : </b><%= username %>&nbsp<b> เบอร์โทรศัพท์ : </b><%= telephone %></p>
+        <p><b>ชื่อ : </b><%= username %>&nbsp<b> เบอร์โทรศัพท์ : </b><%= telephone %>&nbsp<b> เลขที่ห้อง : </b><%= room %></p>
         <table class="table">
             <thead class="thead-dark">
                 <tr align="center">
@@ -119,6 +119,7 @@ ul {
                         <% });%>
                         <input type="hidden" name="total" value="<%= total %>" />
                         <input type="hidden" name="telephone" value="<%= telephone %>" />
+                        <input type="hidden" name="room" value="<%= room %>" />
                         <input type="submit" value="สั่งซื้อ" class="btn btn-success"/>
                       </form>
                       

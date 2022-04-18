@@ -49,6 +49,7 @@ router.get('/checkout', function (req, res) {
         cart: req.session.cart,
         username: req.session.fullname,
         telephone: p.telephone,
+        room: p.room,
         msg: req.flash('msg')
       })
     }
@@ -102,6 +103,7 @@ router.post('/submit', function (req, res, next) {
       telephone: req.body.telephone,
       price: req.body.price,
       total: req.body.total,
+      room: req.body.room,
       orderlist: req.body.orderlist,
       qty: req.body.qty2,
       cart: req.body.cart

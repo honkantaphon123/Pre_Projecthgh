@@ -21,6 +21,12 @@ const userSchema = new Schema({
     lowercase: true,
     validate: [validator.isEmail, 'Enter a valid email address.']
   },
+  room: {
+    type: String,
+    minLength: [3],
+    maxLength: [3],
+    required: true
+  },
   password: {
     type: String,
     required: [true, 'Enter a password.']
