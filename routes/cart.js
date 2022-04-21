@@ -116,7 +116,7 @@ router.post('/submit', function (req, res, next) {
     next(err)
     res.redirect('/checkout')
   }
-  res.redirect('/order')
+  res.redirect('/index2')
 })
 
 module.exports = router
