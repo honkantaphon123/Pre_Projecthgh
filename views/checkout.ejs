@@ -39,18 +39,48 @@ ul {
   padding: 0;
   
 }
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+  background-color: #c67605;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #ff0000;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px; 
+}
 </style>
     <!-- Header -->
     <header>
       <!-- nav -->
       <div class="nav container">
-        <a href="/" class="logo"><i class="fa fa-cutlery" aria-hidden="true"></i> FoodManda</a>
+        <a href="/" class="logo"><i class="fa fa-cutlery" aria-hidden="true"></i> FoodMax</a>
         <!-- Cart-Icon -->
         <ul style="line-height:10%">
           <li class="nav-item active">
           <!-- <i class="bx bx-shopping-bag" id="cart-icon"></i> -->
           <a href="#" class="menu"><i class="fa fa-user" style="font-size:20px;color:black"></i> สวัสดีคุณ <%= username.split(" ")[0] %><a>
-            <a href="/checkout" class="menu"> <i class="fa fa-shopping-cart" style="font-size:20px;color:black"></i> ตะกร้าสินค้า</span>
+            <a href="/checkout" class="menu"><i class="fa" style="font-size:24px">&#xf07a;</i>
+              <span class='badge badge-warning' id='lblCartCount'>
+                <% if (cart != undefined) { %>
+                  <% var total=0 %>
+                  <% for(var i=0; i<cart.length; i++) { %>
+                    <% total += +cart[i].qty %>
+                  <% } %>
+                  <%= total %>
+                  <% } %>
+                
+              </span>ตะกร้าสินค้า</span>
             </a>
             <a href="/order?id=<%= username %>" class="menu"><i class="fa fa-archive" style="font-size:20px"></i> ออเดอร์ที่สั่ง<a></a>
             <a href="/logout" class="menu"><i class="fa fa-sign-in" aria-hidden="true"></i> ออกจากระบบ</a>

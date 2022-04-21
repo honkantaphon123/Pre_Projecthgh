@@ -35,7 +35,16 @@ exports.home = (req, res) => {
       const user = req.session.fullname
       if (user === undefined) {
         res.render('index', { product: response.data })
-      } else res.render('index2', { product: response.data, username: req.session.fullname, telephone: req.session.telephone, id: req.session._id, msg: req.flash('msg') })
+      } else {
+        res.render('index2', {
+          product: response.data,
+          username: req.session.fullname,
+          telephone: req.session.telephone,
+          cart: req.session.cart,
+          id: req.session._id,
+          msg: req.flash('msg')
+        })
+      }
     })
     .catch(err => {
       res.send(err)
@@ -49,7 +58,15 @@ exports.order = (req, res) => {
       const user = req.session.fullname
       if (user === undefined) {
         res.render('index')
-      } else res.render('order', { order: response.data, username: req.session.fullname, userid: req.session._id, id: req.query.id })
+      } else {
+        res.render('order', {
+          order: response.data,
+          username: req.session.fullname,
+          cart: req.session.cart,
+          userid: req.session._id,
+          id: req.query.id
+        })
+      }
     })
     .catch(err => {
       res.send(err)
