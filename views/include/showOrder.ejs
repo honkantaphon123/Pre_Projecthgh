@@ -6,8 +6,13 @@
         
         <td><%= i + 1 %></td>
         <td><%= order[i].username %></td>
-        <td><%= order[i].total %> บาท</td>
-        <td><%= order[i].status %></td>
+        <td><%= order[i].total %> Baht</td>
+        <% if (order[i].status === 'Success' ) { %>
+        <td><p class="text-success"><i class="fa fa-check-square" aria-hidden="true"></i><b> Success</b></p></td>
+        <% } %>
+        <% if (order[i].status === 'pending' ) { %>
+            <td><p class="text-warning"><i class="fa fa-clock-o" aria-hidden="true"></i><b> Pending</b></p></td>
+        <% } %>
         <td><a href="/viewOrder?id=<%= order[i]._id%>" style="font-size:18px"></i>view</a></td>
         <input type="hidden" name="id" value="<%= order[i]._id %>">
         

@@ -10,8 +10,9 @@
         <td><%= product.price[i] %></td>   
     </tr>
     <% } %> 
-    <h4 align="center"><b>ชื่อ : </b><%= product.username %>&nbsp<b> เบอร์โทรศัพท์ : </b><%= product.telephone %>
-      &nbsp<b> เลขห้อง : </b><%= product.room %></h4>
+    <h4 align="center">ชื่อ : <b><%= product.username %></b>&nbsp เบอร์โทรศัพท์ : <b><%= product.telephone %></b>
+      &nbsp เลขห้อง : <b><%= product.room %></b>&nbsp การจัดส่ง : <b><%= product.way %></b>
+    </h4>
   <% });%>
   <tr align="center">
     <td></td>

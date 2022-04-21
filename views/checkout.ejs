@@ -64,11 +64,15 @@ ul {
     <section class="shop container">
       <h2 class="section-title">รายการสินค้าที่สั่ง</h2>
       <!-- Content -->
-
+      <form action="./submit" method="post">
       <% if (typeof cart !== "undefined") {%>
-        <h4 align="center">
-          ชื่อ : <%= username %>&nbsp เบอร์โทรศัพท์ : <%= telephone %>&nbspเลขที่ห้อง : <%= room %>
-        </h4>
+        <h5 align="center">
+          ชื่อ : <%= username %>&nbsp เบอร์โทรศัพท์ : <%= telephone %>&nbspห้อง : <%= room %>&nbsp
+          <input type="radio" value="ส่งที่ห้อง"  name="way" checked>
+          <label for="age1"><i class="fa fa-truck" aria-hidden="true"></i> ส่งที่ห้อง</label>
+          <input type="radio" value="รับที่ร้านค้า" name="way">
+          <label for="age2"><i class="fa fa-home" aria-hidden="true"></i> รับที่ร้านค้า</label> 
+        </h5>
         <table class="table">
             <thead class="thead-dark">
                 <tr align="center">
@@ -91,7 +95,9 @@ ul {
                         <a href="/update/<%= product.title %>?action=clear"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;
                       </td>
                       <td><%= sub %></td>
-                     
+                      <input type="hidden" name="price" value="<%= product.price %>" />
+                      <input type="hidden" name="orderlist" value="<%= product.title %>" />
+                      <input type="hidden" name="qty" value="<%= product.qty %>" />
                     </tr>
                     <% });%>
                     <tr align="center">
@@ -106,23 +112,14 @@ ul {
                     <td></td>
                     <td>
                       
-                      <form action="./submit" method="post">
+                      
                         <a class="btn btn-danger" href="/clear">เคลียร์</a>
-                        <% var orderlist %>
-                        <% var qty2 = [] %>
-                        <% cart.forEach (function (product) { %>
-                          <% var sub = parseInt (product.qty * product.price).toFixed (2) %>
-                          <% orderlist = product.title %>
-                          <% qty2 = product.qty %>
-                          <input type="hidden" name="orderlist" value="<%= orderlist %>" />
-                          <input type="hidden" name="qty2" value="<%= qty2 %>" />
-                          <input type="hidden" name="price" value="<%= sub %>" />
-                        <% });%>
                         <input type="hidden" name="total" value="<%= total %>" />
                         <input type="hidden" name="telephone" value="<%= telephone %>" />
                         <input type="hidden" name="room" value="<%= room %>" />
                         <input type="submit" value="สั่งซื้อ" class="btn btn-success"/>
-                      </form>
+                        
+                      
                       
                     </td>
 
@@ -137,7 +134,7 @@ ul {
  
         
 
-
+  </form>
   </section>
   </body>
   <script src="/js/main.js"></script>

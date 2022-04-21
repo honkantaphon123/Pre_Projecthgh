@@ -105,7 +105,8 @@ router.post('/submit', function (req, res, next) {
       total: req.body.total,
       room: req.body.room,
       orderlist: req.body.orderlist,
-      qty: req.body.qty2,
+      qty: req.body.qty,
+      way: req.body.way,
       cart: req.body.cart
 
     })

@@ -8,6 +8,7 @@ const OrderSchema = new mongoose.Schema(
     total: { type: Array },
     orderlist: { type: Array },
     qty: { type: Array },
+    way: { type: String },
     cart: { type: String },
     status: {
       type: String,
