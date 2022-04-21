@@ -90,7 +90,6 @@ ul {
 
       </div> 
     </header>
-
     <section class="shop container">
         <table class="table">
             <thead class="thead-dark">
@@ -107,7 +106,12 @@ ul {
                     <td><%= i + 1 %></td>
                     <td><%= order[i]._id %></td>
                     <td><%= order[i].total %> บาท</td>
-                    <td><%= order[i].status %></td>
+                    <% if (order[i].status === 'Success' ) { %>
+                      <td><p class="text-success"><i class="fa fa-check-square" aria-hidden="true"></i><b> Success</b></p></td>
+                      <% } %>
+                      <% if (order[i].status === 'pending' ) { %>
+                          <td><p class="text-warning"><i class="fa fa-clock-o" aria-hidden="true"></i><b> Pending</b></p></td>
+                      <% } %>
                 </tr>
                 <% } %>   
             </tbody>
