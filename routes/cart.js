@@ -5,6 +5,7 @@ const User = require('../models/User2')
 
 router.get('/add-to-cart/:id', (req, res) => {
   const slug = req.params.id
+  const aa = req.get('referer')
   Product.findOne({ _id: slug }, function (err, p) {
     if (err) console.log(err)
     if (typeof req.session.cart === 'undefined') {
@@ -35,8 +36,7 @@ router.get('/add-to-cart/:id', (req, res) => {
         })
       }
     }
-    console.log(req.session.cart)
-    res.redirect('http://servertest.app.ruk-com.cloud/index2')
+    res.redirect(aa)
   })
 })
 
