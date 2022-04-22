@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow&family=PT+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&display=swap");
 
 :root {
   --dark: #2b2d42;
@@ -15,7 +15,7 @@
 
 a {
   text-decoration: none;
-  font-family: "PT Sans", sans-serif;
+  font-family: 'Mitr', sans-serif;
 }
 
 .container {

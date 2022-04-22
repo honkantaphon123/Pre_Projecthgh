@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Mitr', sans-serif;
 }
 html,
 body {
@@ -160,7 +160,7 @@ form .btn .btn-layer {
   width: 300%;
   position: absolute;
   left: -100%;
-  background: -webkit-linear-gradient(right, #64a85b, #95db79);
+  background: -webkit-linear-gradient(right, #96f78a, #64a85b);
 
   transition: all 0.4s ease;
 }
@@ -175,7 +175,7 @@ form .btn input[type="submit"] {
   border: none;
   color: #fff;
   padding-left: 0;
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 500;
   cursor: pointer;
 }
