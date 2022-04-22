@@ -36,7 +36,7 @@ router.get('/add-to-cart/:id', (req, res) => {
       }
     }
     console.log(req.session.cart)
-    res.redirect('back')
+    res.redirect('http://servertest.app.ruk-com.cloud/index2')
   })
 })
 
