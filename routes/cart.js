@@ -116,6 +116,7 @@ router.post('/submit', function (req, res, next) {
     next(err)
     res.redirect('/checkout')
   }
+  req.flash('msg', 'สั่งสินค้าเรียบร้อยแล้ว')
   res.redirect('/index2')
 })
 

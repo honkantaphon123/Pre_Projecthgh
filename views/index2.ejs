@@ -101,7 +101,9 @@
     <section class="shop container">
       <h2 class="section-title">เมนูอาหาร</h2>
       <!-- Content -->
- 
+      <% if (msg.length > 0) { %>
+        <div class="alert alert-success" align="center"><b><h5><%= msg %></h5></b></div>
+        <% } %>
       <div class="shop-content">
  
         <% for(var i = 0; i < product.length; i++) { %>
