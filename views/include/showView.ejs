@@ -1,7 +1,8 @@
 <% var total = 0 %>
 <% order.forEach (function (product) { %>
     <% for(var i = 0; i < product.orderlist.length; i++) { %>
-    <% total += +product.price[i] %>
+      <% var sub = parseInt (product.qty[i] * product.price[i]).toFixed (2) %>
+    <% total += +sub %>
     <tr>
 
         <td><%= i + 1 %></td>
